@@ -8,21 +8,12 @@ function equ = LagrangeEqu(x)
     x4 = x(4);  % lambda
 
     % equation 1: df/dx = lambda * dg/dx
-%     equ(1) = x4 - ...
-%         (x1^2*(x2 + x3) - x1*(x2^2 + 2*x2*x3 + x3^2) + x2*x3^2 + x2^2*x3 + x1^3 - x2^3 - x3^3) / ...
-%         (4*x2*x3 + 2*x1^2 + 2*x2^2 + 2*x3^2 + x1*(4*x2 + 4*x3));
     equ(1) = x4 + 4*x1*x2^2 + 4*x1*x3^2 - 4*x1^3;
         
     % equation 2: df/dy = lambda * dg/dy
-%     equ(2) = x4 + ...
-%         (x2*x3^2 - x1*(x2^2 - 2*x2*x3 + x3^2) - x2^2*x3 + x1^3 - x2^3 + x3^3 + x1^2*(x2 - x3)) / ...
-%         (4*x2*x3 + 2*x1^2 + 2*x2^2 + 2*x3^2 + x1*(4*x2 + 4*x3));
     equ(2) = x4 + 4*x1^2*x2 + 4*x2*x3^2 - 4*x2^3;
         
     % equation 3: df/dz = lambda * dg/dz
-%     equ(3) = x4 - ...
-%         (x1*(x2^2 - 2*x2*x3 + x3^2) + x2*x3^2 - x2^2*x3 - x1^3 - x2^3 + x3^3 + x1^2*(x2 - x3)) / ...
-%         (4*x2*x3 + 2*x1^2 + 2*x2^2 + 2*x3^2 + x1*(4*x2 + 4*x3));
     equ(3) = x4 + 4*x1^2*x3 + 4*x2^2*x3 - 4*x3^3;
         
     % equation 4: constraint function
