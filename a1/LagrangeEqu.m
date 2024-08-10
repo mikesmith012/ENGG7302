@@ -1,4 +1,11 @@
-% function that defines the set of lagrange equations
+%% Function that defines the set of Lagrange Equations
+%
+% Params:
+%  -> x: array of variable to be solved
+%
+% Returns:
+%  -> equ: system of equations defined in the function
+%
 function equ = LagrangeEqu(x)
 
     % parameter assignment
