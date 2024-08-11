@@ -8,14 +8,24 @@ a = 0; b = 50; tol = 0.001;
 % Declare x range: from 0 to 50 
 x = linspace(a, b, (b-a)/tol + 1);
 
+% Assume: x = y
+y = x;
+
+% Rearrange constraint function: x + y + z = 100
+z = 100 - x - y;
+
+% Semiperimeter: "s = 0.5(x + y + z) = 0.5 x 100 = 50"
+s = 50;
+
 % Declare 1d function to be optimised
-f = 4*x.^4 - (2*x.^2 - (100 - 2*x).^2).^2;
+% Object function: "f = r^2 = (s - x)(s - y)(s - y)/s"
+f = (s - x).*(s - y).*(s - z)/s;
 
 %% Plot the 1D Opt Fuction to be optimised
-plot(x, f);
+plot(x, f); xlim([25 50]);
 title("1D Opt Function");
 xlabel("Side length x (m)");
-ylabel("16 x Area^2 (m^2)");
+ylabel("Radius squared r^2 (m^2)");
 
 %% Golden Section Search
 x0_gss = GoldenSectionSearch(f, a, b, tol);

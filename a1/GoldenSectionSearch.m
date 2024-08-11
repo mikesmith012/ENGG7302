@@ -15,7 +15,7 @@ function x0 = GoldenSectionSearch(y, a, b, tol)
     tau = (sqrt(5) - 1)/2;
 
     % specify the initial two points "x1" and "x2" based on the golden ratio
-    x1 = a + (1 - tau)*(b - a);     
+    x1 = a + (1 - tau)*(b - a);
     x2 = a + tau*(b - a);
 
     % find the value of the function y, "f1" and "f2", at respective points "x1" and "x2"
