@@ -1,4 +1,7 @@
 %% MATLAB code for A1 Q1 Part B
+%  -> Defines the 1D OPT function to be optimised
+%  -> Performs Golden Section Searcn and Newton's Method
+
 
 %% Declare the 1D Opt Function and associated parameters
 
@@ -19,7 +22,9 @@ s = 50;
 
 % Declare 1d function to be optimised
 % Object function: "f = r^2 = (s - x)(s - y)(s - y)/s"
-f = (s - x).*(s - y).*(s - z)/s;
+f = (s - x).*(s - y).*(s - z)/s;       % obj function defined in matlab
+%f = (((s - x).^2).*(2*x - s))/s;       % obj function derived by hand
+
 
 %% Plot the 1D Opt Fuction to be optimised
 plot(x, f); xlim([25 50]);
@@ -27,14 +32,17 @@ title("1D Opt Function");
 xlabel("Side length x (m)");
 ylabel("Radius squared r^2 (m^2)");
 
+
 %% Golden Section Search
 x0_gss = GoldenSectionSearch(f, a, b, tol);
 fprintf("Golden Section Search: x = %f\n", x0_gss);
+
 
 %% Newton's Method
 n = 100;
 x0_nm = NewtonsMethod(x, f, a, b, n, tol);
 fprintf("Newton's Method (n = %d): x = %f\n", n, x0_nm);
+
 
 %% Results:
 % "Golden Section Search: x = 33.333976"

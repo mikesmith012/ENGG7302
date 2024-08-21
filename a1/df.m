@@ -10,19 +10,19 @@
 %
 function dfx = df(x, y, xi)
 
-    % use forward difference when at the first element
+    % Use forward difference when at the first element
     if xi == 1
         xp_forward = x(xi + 1);
         yp_forward = y(xi + 1);
         dfx = (yp_forward - y(xi)) / (xp_forward - x(xi));
 
-    % use reverse difference when at the last element
+    % Use reverse difference when at the last element
     elseif xi == length(x)
         xp_reverse = x(xi - 1);
         yp_reverse = y(xi - 1);
         dfx = (y(xi) - yp_reverse) / (x(xi) - xp_reverse);
     
-    % use central difference for all other cases
+    % Use central difference for all other cases
     else
         xp_forward = x(xi + 1);
         xp_reverse = x(xi - 1);

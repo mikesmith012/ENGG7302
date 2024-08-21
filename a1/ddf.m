@@ -10,11 +10,11 @@
 %
 function ddfx = ddf(x, y, xi)
 
-    % second-order derivative is not defined at the boundary
+    % Second-order derivative is not defined at the boundary
     if xi == 1 || xi == length(x)
         warning("Second order derivative is not defined at the boundary.");
     
-    % use central difference for all other cases
+    % Use central difference for all other cases
     else
         xp_forward = x(xi + 1);
         xp_reverse = x(xi - 1);

@@ -1,4 +1,6 @@
 %% MATLAB code for A1 Q1 Part A
+%  -> Used for checking the handwritten solutions for Part A
+
 
 %% Declare an array of symbolic variables
 % "x1 -> x"
@@ -6,6 +8,7 @@
 % "x3 -> z"
 % "x4 -> lambda"
 syms x [1 4];
+
 
 %% The Constraint Function
 
@@ -21,6 +24,7 @@ fprintf("\nConstraint Function PDE's:\n");
 gfx = diff(g, x1); fprintf("dg/dx = %s\n", gfx); % "dg/dx"
 gfy = diff(g, x2); fprintf("dg/dx = %s\n", gfy); % "dg/dy"
 gfz = diff(g, x3); fprintf("dg/dx = %s\n", gfz); % "dg/dz"
+
 
 %% The Object Function
 
@@ -40,6 +44,7 @@ dfx = combine(collect(diff(f, x1))); fprintf("df/dx = %s\n", dfx); % "df/dx"
 dfy = combine(collect(diff(f, x2))); fprintf("df/dy = %s\n", dfy); % "df/dy"
 dfz = combine(collect(diff(f, x3))); fprintf("df/dz = %s\n", dfz); % "df/dz"
 
+
 %% Apply the Lagrange Equality "df = lambda*dg"
 fprintf("\nLagrange Equations:\n");
 equ1 = dfx + x4*gfx == 0; fprintf("equ1: %s\n", equ1); % df/dx = lambda * dg/dx 
@@ -52,6 +57,7 @@ equ4 = x1 + x2 + x3 == 100; fprintf("equ4: %s\n", equ4); % constraint function
 % "equ2: x3 + x4 - x1*(x3/50 - 1) - 50 == 0"
 % "equ3: x2 + x4 - x1*(x2/50 - 1) - 50 == 0"
 % "equ4: x1 + x2 + x3 == 100"
+
 
 %% Solve the system of non-linear equations
 equ = @LagrangeEqu;     % initialise function that defines the set of lagrange equations
