@@ -83,3 +83,32 @@ fprintf("c = %f\n", x(3));
 predicted = N * [x(1); x(2); x(3)];
 fprintf("\nPredicted Prices:\n");
 fprintf("%f\n", predicted);
+
+
+%% Question 3
+fprintf("\n\nQUESTION 3\n\n");
+
+% Weighting matrix
+W = diag([10, 1, 1, 1, 1]);
+
+% Apply the weighting matrix to the observation matrices
+A = W * N;
+b = W * p;
+
+% Pseudo-inverse calculation
+psinvA = (A' * A) \ A'; disp(psinvA);
+
+% Solve the system of linear equations
+x = psinvA * b; disp(x);
+
+% Display predicted parameters
+fprintf("\nPrediction Parameters:\n"); 
+fprintf("a = %f\n", x(1));
+fprintf("b = %f\n", x(2));
+fprintf("c = %f\n", x(3));
+
+% Display predicted prices for each observation
+predicted = N * [x(1); x(2); x(3)];
+fprintf("\nPredicted Prices:\n");
+fprintf("%f\n", predicted);
+
