@@ -1,4 +1,4 @@
-%% ENGG7302 Assignment 2
+%% ENGG7302 Assignment 2 Part A
 clear;
 
 % Number of chairs for type A, B and C respectively
