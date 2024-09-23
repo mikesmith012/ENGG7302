@@ -1,7 +1,7 @@
 
 clear;
 
-addpath("a2data\");
+addpath("a2data/");
 
 load("A.mat");
 load("b.mat");
