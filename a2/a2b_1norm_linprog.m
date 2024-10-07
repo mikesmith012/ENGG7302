@@ -47,10 +47,8 @@ options = optimoptions('linprog', 'Display', 'iter');
 
 % SOlve using linprog
 x = linprog(f, Aineq, bineq, [], [], lb, ub, options);
-
-% Store results into a sparse matrix and display to console
-sparse_x = sparse(x); disp(sparse_x);
+spx1n_linprog = sparse(x); disp(spx1n_linprog);
 
 % Save result
-save("a2b_1norm", "sparse_x");
+try save("a2outputs/a2b_1norm_linprog", "spx1n_linprog"); catch; end
 

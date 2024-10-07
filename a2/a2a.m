@@ -91,15 +91,8 @@ fprintf("\n\nQUESTION 3\n\n");
 % Weighting matrix
 W = diag([10, 1, 1, 1, 1]);
 
-% Apply the weighting matrix to the observation matrices
-A = W * N;
-b = W * p;
-
-% Pseudo-inverse calculation
-psinvA = (A' * A) \ A'; disp(psinvA);
-
 % Solve the system of linear equations
-x = psinvA * b; disp(x);
+x = (N' * W * N) \ (N' * W * p);
 
 % Display predicted parameters
 fprintf("\nPrediction Parameters:\n"); 

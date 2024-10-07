@@ -37,16 +37,16 @@ nonlcon = @(x) nonlin_constr(x, A, b, eps);
 %  - Set max number of function evals
 options = optimoptions('fmincon', ...
     'Display', 'iter', ...
-    'Algorithm', 'sqp', ...
-    'MaxFunctionEvaluations', 1e4 ...
+    'Algorithm', 'interior-point', ...
+    'MaxFunctionEvaluations', 1e5 ...
 );
 
 % Solve using fmincon
-[x_opt, fval, exitflag, output] = fmincon(fun, x0, [], [], [], [], lb, ub, nonlcon, options);
-x_opt_sparse = sparse(x_opt); disp(x_opt_sparse);
+x = fmincon(fun, x0, [], [], [], [], lb, ub, nonlcon, options);
+spx2n_fmincon = sparse(x); disp(spx2n_fmincon);
 
 % Save result
-save("a2b_2norm", "x_opt_sparse");
+try save("a2outputs/a2b_2norm_fmincon", "spx2n_fmincon"); catch; end
 
 
 %% Nonlinear constraint function
