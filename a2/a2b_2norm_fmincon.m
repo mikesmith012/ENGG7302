@@ -14,6 +14,26 @@ load("x0.mat");
 eps = 0.000008;  % Given eps value
 
 
+%% Inequality constraints for A and b
+
+% Compute the mean of b
+b_mean = mean(b);
+
+% 
+C = sum(A, 1) / m;
+
+%
+D1 = C*(1 + eps);
+D2 = C*(1 - eps);
+
+% A and b inequalities 
+Aineq = [A - D1; D2 - A];
+bineq = [
+     b_mean*(1 + eps) - b; 
+    -b_mean*(1 - eps) + b;
+];
+
+
 %% Bounds for x based on constraints
 
 % Lower bound (x >= -x0)
@@ -28,36 +48,6 @@ ub = 0.007 - x0;
 % Objective function (minimise 2-norm)
 fun = @(x) norm(x, 2);
 
-% Nonlinear constraint function with additional parameters
-nonlcon = @(x) nonlin_constr(x, A, b, eps);
-
-% Set up fmincon options:
-%  - Display results for each iteration
-%  - Specify opt algorithm
-%  - Set max number of function evals
-options = optimoptions('fmincon', ...
-    'Display', 'iter', ...
-    'Algorithm', 'interior-point', ...
-    'MaxFunctionEvaluations', 1e5 ...
-);
-
 % Solve using fmincon
-x = fmincon(fun, x0, [], [], [], [], lb, ub, nonlcon, options);
-spx2n_fmincon = sparse(x); disp(spx2n_fmincon);
-
-% Save result
-try save("a2outputs/a2b_2norm_fmincon", "spx2n_fmincon"); catch; end
-
-
-%% Nonlinear constraint function
-function [cineq, ceq] = nonlin_constr(x, A, b, eps)
-    b0 = mean(b);
-    bp = A * x + b;
-
-    % Specify constraints
-    cineq = [
-        -b0 * (1 + eps) + bp;
-         b0 * (1 - eps) - bp;
-    ];
-    ceq = [];
-end
+[x, fval] = fmincon(fun, x0, Aineq, bineq, [], [], lb, ub);
+disp(fval);

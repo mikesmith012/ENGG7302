@@ -105,3 +105,13 @@ predicted = N * [x(1); x(2); x(3)];
 fprintf("\nPredicted Prices:\n");
 fprintf("%f\n", predicted);
 
+sos = 0;
+for i = 1:length(p)
+    if i == 1
+        sos = sos + 10*(p(i) - predicted(i))^2;
+    else
+        sos = sos + (p(i) - predicted(i))^2;
+    end
+end
+disp(sos);
+
