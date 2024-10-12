@@ -1,4 +1,4 @@
-%% ENGG7302 Assignment 2 Part B (SVD Image Compression)
+%% ENGG7302 Assignment 2 Part B Question 2
 clear;
 
 
