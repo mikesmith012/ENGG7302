@@ -81,7 +81,7 @@ f1 = ones(1, 2*n);
 
 % Minimise 1-norm using linprog
 [x1, fval1] = linprog(f1, Aineq1, bineq1, [], [], lb1, ub1);
-disp(fval1);
+fprintf("1-norm fval = %.5f\n", fval1);
 
 
 %% Set up the fmincon function for 2-norm
@@ -90,8 +90,10 @@ disp(fval1);
 f2 = @(x) norm(x, 2);
 
 % Minimise 2-norm using fmincon
-[x2, fval2] = fmincon(f2, x0, Aineq2, bineq2, [], [], lb2, ub2);
-disp(fval2);
+maxFuncEvals = 1e5;
+options = optimoptions('fmincon', 'MaxFunctionEvaluations', maxFuncEvals);
+[x2, fval2] = fmincon(f2, x0, Aineq2, bineq2, [], [], lb2, ub2, [], options);
+fprintf("2-norm fval = %.5f\n", fval2);
 
 
 %% Plot the resultant x-vectors
@@ -105,5 +107,5 @@ title(sprintf("Minimised 1-norm x results (fval = %.5f)", fval1));
 % 2-norm result
 subplot(2, 1, 2); plot(x2); xlim([0, n]);
 xlabel("n"); ylabel("x2(n)");
-title(sprintf("Minimised 2-norm x results (fval = %.5f)", fval2));
+title(sprintf("Minimised 2-norm x results (fval = %.5f, max func evals = %d)", fval2, maxFuncEvals));
 
