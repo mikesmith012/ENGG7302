@@ -1,4 +1,5 @@
-%% ENGG7302 Assignment 2 Part A
+%% ENGG7302 Assignment 2 - Part A 
+%  Mike Smith - 46408789
 clear;
 
 % Number of chairs for type A, B and C respectively

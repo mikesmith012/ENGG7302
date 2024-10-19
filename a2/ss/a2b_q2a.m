@@ -1,4 +1,5 @@
-%% ENGG7302 Assignment 2 Part B Question 2
+%% ENGG7302 Assignment 2 - Part B Question 2
+%  Mike Smith - 46408789
 clear;
 
 

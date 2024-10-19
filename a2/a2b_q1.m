@@ -1,4 +1,5 @@
-%% ENGG7302 Assignment 2 Part B Question 1
+%% ENGG7302 Assignment 2 - Part B Question 1
+%  Mike Smith - 46408789
 clear;
 
 % Load in the provided data (A, b and x0)
@@ -42,8 +43,8 @@ Aineq1 = [
     
 ];
 bineq1 = [
-     bm*(eps + 1) - b;  % Condition 1 RHS: mean(b)(eps + 1) - b
-     bm*(eps - 1) + b;  % Condition 2 RHS: mean(b)(eps - 1) + b
+     bm*(eps + 1) - b;      % Condition 1 RHS: mean(b)(eps + 1) - b
+     bm*(eps - 1) + b;      % Condition 2 RHS: mean(b)(eps - 1) + b
      zeros(n, 1);           % Condition 3 RHS: 0
      zeros(n, 1);           % Condition 4 RHS: 0
 ];
